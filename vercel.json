@@ -1,0 +1,29 @@
+{
+  "version": 2,
+  "builds": [
+    {
+      "src": "backend/flaskapp.py",
+      "use": "@vercel/python",
+      "config": { "maxLambdaSize": "50mb" }
+    }
+  ],
+  "routes": [
+    {
+      "src": "/images.html",
+      "dest": "/images.html",
+      "headers": { "cache-control": "s-maxage=31536000,immutable" }
+    },
+    {
+      "src": "/(resizer|bremover).html",
+      "dest": "/$1.html"
+    },
+    {
+      "src": "/api/(.*)",
+      "dest": "backend/flaskapp.py"
+    }
+  ],
+  "static": {
+    "public": "/"
+  },
+  "cleanUrls": true
+}
