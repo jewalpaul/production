@@ -22,8 +22,6 @@
       "dest": "backend/flaskapp.py"
     }
   ],
-  "static": {
-    "public": "/"
-  },
   "cleanUrls": true
 }
+
