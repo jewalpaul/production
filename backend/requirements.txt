@@ -1,4 +1,4 @@
 Flask==2.2.2
 Pillow==10.0.1
-Flask-Cros==2.2.2
+Flask-Cors==2.2.2
 rembg==2.0.50
