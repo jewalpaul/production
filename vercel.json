@@ -7,21 +7,31 @@
       "config": { "maxLambdaSize": "50mb" }
     }
   ],
-  "routes": [
+  "rewrites": [
     {
-      "src": "/images.html",
-      "dest": "/images.html",
-      "headers": { "cache-control": "s-maxage=31536000,immutable" }
+      "source": "/images.html",
+      "destination": "/images.html"
     },
     {
-      "src": "/(resizer|bremover).html",
-      "dest": "/$1.html"
+      "source": "/(resizer|bremover).html",
+      "destination": "/$1.html"
     },
     {
-      "src": "/api/(.*)",
-      "dest": "backend/flaskapp.py"
+      "source": "/api/(.*)",
+      "destination": "backend/flaskapp.py"
     }
   ],
-  "cleanUrls": true
+  "cleanUrls": true,
+  "headers": [
+    {
+      "source": "/images.html",
+      "headers": [
+        {
+          "key": "cache-control",
+          "value": "s-maxage=31536000,immutable"
+        }
+      ]
+    }
+  ]
 }
 
